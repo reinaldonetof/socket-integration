@@ -3,6 +3,9 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
+const redis = require("socket.io-redis");
+io.adapter(redis());
+
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => res.render("index"));
